@@ -1,0 +1,10 @@
+.background{
+    background-image: url(images/citylookup\ Background.jpg);
+    height: 1000px;
+    background-repeat: repeat;
+    width: 100%;
+    background-size: cover;
+}
+.text {
+    color: black;
+}

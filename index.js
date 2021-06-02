@@ -68,21 +68,20 @@ function onstatesDropdownChanged() {
         let selectOneOption = document.createElement("option");
         selectOneOption.textContent = "Select states first...";
         selectOneOption.value = "";
-        teamDropdown.appendChild(selectOneOption);
+        citiesDropdown.appendChild(selectOneOption);
 
         return;
     };
 
-    let matchingstates = cityStates.find(arrayElement => arrayElement.stateAbbr == selectedstateAbbr);
+    let matchingCity = cityStates.find(arrayElement => arrayElement.stateAbbr == selectedstateAbbr);
 
     let selectOneOption = document.createElement("option");
     selectOneOption.value = "";
     citiesDropdown.appendChild(selectOneOption);
 
-    for(let i = 0; i < cities.length; i++){
+    for(let i = 0; i < matchingCity.cities.length; i++){
         let theOption = document.createElement("option");
-        theOption.textContent = cityStates[i].state;
-        theOption.value = cityStates[i].stateAbbr;
+        theOption.textContent = matchingCity.cities[i]
         citiesDropdown.appendChild(theOption);
     }
 };
@@ -94,14 +93,14 @@ function oncitiesDropdownChanged() {
     const messagePara = document.getElementById("messagePara");
     messagePara.innerHTML = "";
 
-    let selectedCities = CityDropdown.value;
+    let selectedCities = citiesDropdown.value;
 
     if (selectedCities == "") {
         return;
     };
 
-    let selectedStateIndex = stateDropdown.selectedIndex;
-    let selectedState = stateDropdown.options[selectedStateIndex].text;
+    let selectedStateIndex = statesDropdown.selectedIndex;
+    let selectedState = statesDropdown.options[selectedStateIndex].text;
 
     let message = "Cities: " + selectedCities + "<br>" +
         "states: " + selectedState;
